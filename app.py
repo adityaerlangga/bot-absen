@@ -1,11 +1,9 @@
 from selenium import webdriver 
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
 import time
-
-ser = Service("CHROMEDRIVER_PATH")
-options = webdriver.ChromeOptions()
-options.add_experimental_option('excludeSwitches', ['enable-logging'])
 
 nama = "Aditya"
 username = "03041282025055@student.unsri.ac.id"
@@ -19,7 +17,8 @@ mata_kuliah['Metode Numerik'] = "11418"
 mata_kuliah['Analisis Transien Rangkaian Listrik'] = "15034"
 mata_kuliah['Konversi Energi'] = "30565"
 mata_kuliah['Praktikum Dasar Sistem Telekomunikasi'] = "11664"
-a = webdriver.Chrome(service=ser,options=options)
+
+a = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
 a.get('https://elearning212.unsri.ac.id//')
 a.find_elements(By.XPATH,"/html/body/div[3]/header[1]/div/div/div[2]/div/form/div[1]/input[2]")[0].send_keys(username)
 a.find_elements(By.XPATH,"/html/body/div[3]/header[1]/div/div/div[2]/div/form/div[1]/input[3]")[0].send_keys(password)
@@ -50,17 +49,6 @@ def absen(key, value):
     else :
         print(key + ' => ABSEN TIDAK ADA')
 
-def total():
-    a.get('https://adityaerlangga.id/home/form')
-    a.find_elements(By.XPATH,"/html/body/div[1]/div/div[2]/div[2]/div/div/form/div/div[2]/div[1]/div/input")[0].send_keys(user)
-    a.find_elements(By.XPATH,"/html/body/div[1]/div/div[2]/div[2]/div/div/form/div/div[2]/div[2]/div/input")[0].send_keys(status)
-    a.find_elements(By.XPATH,"/html/body/div[1]/div/div[2]/div[2]/div/div/form/div/div[2]/div[3]/div/input")[0].send_keys(keterangan)
-    a.find_elements(By.XPATH,"//*[contains(text(), 'Submit')]")[0].click()
+for key, value in mata_kuliah.items():
+    absen(key, value)
 
-
-while 0 < 1 :
-    for key, value in mata_kuliah.items():
-        absen(key, value)
-
-    total()
-    time.sleep(53)
