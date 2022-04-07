@@ -34,7 +34,7 @@ def absen(key, value):
     while(panjangerror > 0) :
         a.get('https://elearning212.unsri.ac.id/mod/attendance/view.php?id=' + value)
         textError = a.find_elements(By.XPATH,"//*[contains(text(), 'Error')]")
-    tombol_absen = a.find_element(By.XPATH,"//*[contains(text(), 'Submit attendance')]")
+    tombol_absen = a.find_elements(By.XPATH,"//*[contains(text(), 'Submit attendance')]")
     panjang = len(tombol_absen)
     if panjang > 0 :
         print(key + ' => ABSEN ADA')
