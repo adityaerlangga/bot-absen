@@ -20,7 +20,7 @@ mata_kuliah['Praktikum Dasar Sistem Telekomunikasi'] = "11664"
 
 a = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
 a.get('https://elearning212.unsri.ac.id/')
-a.find_elements(By.XPATH,"/html/body/div[3]/header[1]/div/div/div[2]/div/form/div[1]/input[2]")[0].send_keys(username)
+a.find_element(By.XPATH,"/html/body/div[3]/header[1]/div/div/div[2]/div/form/div[1]/input[2]").send_keys(username)
 a.find_elements(By.XPATH,"/html/body/div[3]/header[1]/div/div/div[2]/div/form/div[1]/input[3]")[0].send_keys(password)
 a.find_elements(By.XPATH,"/html/body/div[3]/header[1]/div/div/div[2]/div/form/div[1]/button")[0].click()
 
