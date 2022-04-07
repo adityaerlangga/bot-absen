@@ -20,9 +20,9 @@ mata_kuliah['Praktikum Dasar Sistem Telekomunikasi'] = "11664"
 
 a = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
 a.get('https://elearning212.unsri.ac.id//')
-a.find_element(By.XPATH,"/html/body/div[3]/header[1]/div/div/div[2]/div/form/div[1]/input[2]").send_keys(username)
-a.find_element(By.XPATH,"/html/body/div[3]/header[1]/div/div/div[2]/div/form/div[1]/input[3]").send_keys(password)
-a.find_element(By.XPATH,"/html/body/div[3]/header[1]/div/div/div[2]/div/form/div[1]/button").click()
+a.find_elements(By.XPATH,"/html/body/div[3]/header[1]/div/div/div[2]/div/form/div[1]/input[2]")[0].send_keys(username)
+a.find_elements(By.XPATH,"/html/body/div[3]/header[1]/div/div/div[2]/div/form/div[1]/input[3]")[0].send_keys(password)
+a.find_elements(By.XPATH,"/html/body/div[3]/header[1]/div/div/div[2]/div/form/div[1]/button")[0].click()
 
 user = '1'
 status = '0'
@@ -38,14 +38,9 @@ def absen(key, value):
     panjang = len(tombol_absen)
     if panjang > 0 :
         print(key + ' => ABSEN ADA')
-        a.find_element(By.XPATH,"//*[contains(text(), 'Submit attendance')]").click()
-        a.find_element(By.XPATH,"//*[contains(text(), 'Present')]").click()
-        a.find_element(By.ID,'id_submitbutton').click()
-        a.get('https://adityaerlangga.id/home/form')
-        a.find_element(By.XPATH,"/html/body/div[1]/div/div[2]/div[2]/div/div/form/div/div[2]/div[1]/div/input").send_keys('1')
-        a.find_element(By.XPATH,"/html/body/div[1]/div/div[2]/div[2]/div/div/form/div/div[2]/div[2]/div/input").send_keys('1')
-        a.find_element(By.XPATH,"/html/body/div[1]/div/div[2]/div[2]/div/div/form/div/div[2]/div[3]/div/input").send_keys(value)
-        a.find_element(By.XPATH,"//*[contains(text(), 'Submit')]").click()
+        a.find_elements(By.XPATH,"//*[contains(text(), 'Submit attendance')]")[0].click()
+        a.find_elements(By.XPATH,"//*[contains(text(), 'Present')]")[0].click()
+        a.find_elements(By.ID,'id_submitbutton')[0].click()
     else :
         print(key + ' => ABSEN TIDAK ADA')
 
